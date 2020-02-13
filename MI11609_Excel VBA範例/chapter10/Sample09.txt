@@ -1,0 +1,10 @@
+﻿	'STEP1：宣告來源與目的地變數
+	Dim inputSheet As Worksheet	'宣告輸入工作表變數
+	Dim dataRange As Range   	'宣告輸入資料範圍變數
+	Dim keyFieldRange As Range	'輸入關鍵欄位變數
+	'設定來源與目的工作表
+	Set inputSheet = Worksheets("輸入")
+	Set dataRange = inputSheet.Range("B13:F23")
+	'設定標題的範圍
+	Set keyFieldRange = _
+		Worksheets("歷史報價").Range("B2:J2").CurrentRegion.Columns(1)

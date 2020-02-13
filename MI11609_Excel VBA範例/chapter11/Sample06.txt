@@ -1,0 +1,7 @@
+﻿Sub saveData(inputSheet As Worksheet)
+	'STEP1：宣告輸入輸出相關變數
+	Dim saveSheet As Worksheet	'儲存輸出工作表的變數
+	Dim dataRange As Range  	'儲存資料範圍變數
+	Dim saveFieldRange As Range	'儲存欄位範圍變數
+	'設定輸入工作表與範圍
+	Set dataRange = inputSheet.Range("B13:F18")

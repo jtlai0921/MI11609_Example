@@ -1,0 +1,3 @@
+﻿Range("A3").Value = DateValue("2016/1/10")
+Range("A4").Value = DateValue("1月10日")
+Range("A5").Value = TimeValue("10:30")

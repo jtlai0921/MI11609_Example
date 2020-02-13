@@ -1,0 +1,5 @@
+﻿Sub Macro4()
+	Dim tmpSheet As Worksheet
+	Set tmpSheet = Worksheets(1)
+	tmpSheet.Name = "顧客名單"
+End Sub

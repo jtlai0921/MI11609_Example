@@ -1,0 +1,19 @@
+﻿'變更年月日・或是開始日・首領日時執行處理
+Private Sub Worksheet_Change(ByVal Target As Range)
+	'指定輸入年月日和開始日・結束日的儲存格範圍
+	Dim dateRange As Range, startFinishRange As Range
+	Set dateRange = Range("H3:H5")
+	Set startFinishRange = Range("E7:F16")
+	If Not Application. _
+		Intersect(Target, dateRange) Is Nothing Then
+		'若更改年・月・日其中的值的話就輸入30日分的日期
+		Call write30Days(dateRange)
+	ElseIf Not Application. _
+		Intersect(Target, startFinishRange) Is Nothing Then
+		'變更開始日或結束日時填滿對應期間
+		Dim rng As Range
+		For Each rng In Target
+			Call fillRange(rng)
+		Next
+	End If
+End Sub

@@ -1,0 +1,6 @@
+﻿Dim selectedRange As Range
+Set selectedRange = Application.InputBox( _
+	Prompt:="請選擇儲存格範圍", _
+	Type:=8 _
+)
+selectedRange.Value = "ExcelVBA"

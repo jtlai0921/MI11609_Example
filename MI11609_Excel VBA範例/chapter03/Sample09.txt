@@ -1,0 +1,11 @@
+﻿'將目前工作儲存格的值變更為VBA
+ActiveCell.Value = "VBA"
+
+'將目前的工作表名稱變更為新工作表名稱
+ActiveSheet.Name = "新工作表名稱"
+
+'透過訊息盒顯示目前活頁簿的檔名
+Msgbox ThisWorkbook.Name
+
+'將目前選取範圍的值變更為VBA
+Selection.Value = "VBA"

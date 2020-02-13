@@ -1,0 +1,3 @@
+﻿Sub Macro1()
+	Selection.Value = "ExcelVBA"
+End Sub

@@ -1,0 +1,3 @@
+﻿Sub Macro4()
+	Range("C5").Value = "VBA"
+End Sub

@@ -1,0 +1,52 @@
+﻿'儲存處理
+Sub saveData()
+	'設定輸入用的工作表
+	Dim inputsheet As Worksheet
+	Set inputsheet = Worksheets("顧客卡型")
+	'設定儲存用table
+	Dim dataTable As ListObject
+	Set dataTable = _
+		Worksheets("顧客一覧").ListObjects("顧客表單")
+	'設定做為鍵值ID所輸入中的儲存格
+	Dim IDRange As Range
+	Set IDRange = inputsheet.Range("C2")
+	'取得現在的id
+	Dim id As Long
+	id = Val(IDRange.Value)
+	'新增記錄
+	'排序ID欄位
+	With dataTable.DataBodyRange
+		.Sort .Columns(1), xlAscending, Header:=xlYes
+	End With
+	Dim listCount As Long
+	listCount = dataTable.ListRows.Count
+	'處理結束時顯示訊息用變數
+	Dim message As String
+	'依現在ID的值判斷是新增或是覆寫
+	If id = 0 Or id > listCount Then
+		'ID為空白（0）,若值太大的話就取得新的ID
+		id = listCount + 1
+		IDRange.Value = id
+		message = "做為" & "ID" & id & "已新增顧客"
+	ElseIf id <= dataTable.ListRows.Count Then
+		'現在的ID已存在的話,進行覆寫刪除
+		dataTable.ListRows(id).Delete
+		message = "將" & "ID" & id & "的資料覆寫"
+	End If
+	'新增記錄
+	Dim arr As Variant
+	'ID,姓名,英文,性別,電話號碼,郵遞區號,地址1,地址2,出生年月日
+	arr = Array( _
+		id, _
+		inputsheet.Range("C3").Value, _
+		inputsheet.Range("C4").Value, _
+		inputsheet.Range("C5").Value, _
+		inputsheet.Range("C6").Value, _
+		inputsheet.Range("C7").Value, _
+		inputsheet.Range("C8").Value, _
+		inputsheet.Range("C9").Value, _
+		inputsheet.Range("C10").Value _
+	)
+	dataTable.ListRows.Add(id, True).Range.Value = arr
+	MsgBox message
+End Sub

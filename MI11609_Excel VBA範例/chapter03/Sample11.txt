@@ -1,0 +1,4 @@
+﻿Sub Macro2()
+	'以比率B計算出價格
+	Range("B6").Value = Range("B3").Value * Range("E3").Value
+End Sub

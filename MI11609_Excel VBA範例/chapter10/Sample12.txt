@@ -1,0 +1,9 @@
+﻿	Dim id As Long '宣告用來儲存編號的變數
+	id = inputSheet.Range("F4").Value
+	Dim findCell As Range '儲存搜尋結果的範圍
+	Set findCell = keyFieldRange.Find(id, lookat:=xlWhole)
+	'如果未找到結果，則離開巨集
+	If findCell Is Nothing Then
+		MsgBox "找不到指定的傳票號碼！"
+		Exit Sub
+	End If

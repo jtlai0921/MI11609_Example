@@ -1,0 +1,34 @@
+﻿	'STEP3：反回相位置再搜尋一次
+	'固定項目的設定
+	With inputSheet
+		.Range("F2").Value = findCell.Offset(0, 1).Value '出售日期
+		.Range("B4").Value = findCell.Offset(0, 2).Value '負責人
+		.Range("C11").Value = findCell.Offset(0, 3).Value '案件名稱
+	End With
+
+	
+	Dim tmpRow As Long '記錄列數
+	tmpRow = 2
+	Dim firstCell As Range '儲存第一個被找到的儲存格
+	Set firstCell = findCell
+	'清除表格內容
+	dataRange.Rows("2:" & dataRange.Rows.Count).ClearContents
+	Do
+		'記錄:商品, 摘要, 單價, 數量, 金額
+		With dataRange
+			.Cells(tmpRow, 1).Value = _
+				findCell.Offset(0, 4).Value '商品
+			.Cells(tmpRow, 2).Value = _
+				findCell.Offset(0, 5).Value '摘要
+			.Cells(tmpRow, 3).Value = _
+				findCell.Offset(0, 6).Value '單價
+			.Cells(tmpRow, 4).Value = _
+				findCell.Offset(0, 7).Value '數量
+			.Cells(tmpRow, 5).Value = _
+				findCell.Offset(0, 8).Value '金額
+		End With
+		'再搜尋一次
+		tmpRow = tmpRow + 1
+		Set findCell = keyFieldRange.FindNext(findCell)
+	Loop While findCell.Address <> firstCell.Address
+End Sub

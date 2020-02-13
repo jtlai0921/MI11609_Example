@@ -1,0 +1,16 @@
+﻿'陣列的宣告
+Dim numList(2) As Long, rangeList(1 To 2) As Range
+
+'陣列初值代入
+numList(0) = 100
+numList(1) = 300
+numList(2) = 500
+
+'將範圍內容指定給陣列
+Set rangeList(1) = Range("A1:C10")
+Set rangeList(2) = Range("E1:G5")
+
+'陣列值的參考
+Debug.Print "取出陣列值：", numList(0), numList(1), numList(2)
+Debug.Print "取出陣列對應的範圍地址：", _
+	rangeList(1).Address, rangeList(2).Address

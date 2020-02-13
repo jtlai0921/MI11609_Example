@@ -1,0 +1,4 @@
+﻿Sub Macro4()
+	ThisWorkbook.Worksheets("客戶名單").Range("B2:H12"). _
+	AutoFilter Field:=3, Criteria1:="男"
+End Sub

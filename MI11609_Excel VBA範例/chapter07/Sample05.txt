@@ -1,0 +1,12 @@
+﻿Select Case Range("B3").Value
+	Case Is <= 3
+		MsgBox "儲存格B3內容小於等於3"
+	Case 4
+		MsgBox "儲存格B3內容等於4"
+	Case 5, 6
+		MsgBox "儲存格B3內容等於5或6"
+	Case 7 To 10
+		MsgBox "儲存格B3內容介於7到10之間"
+	Case Else
+		MsgBox "儲存格B3內容判定的範圍以外"
+End Select

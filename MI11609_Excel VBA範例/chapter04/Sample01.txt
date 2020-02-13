@@ -1,0 +1,1 @@
+﻿MsgBox Range("A1").Value

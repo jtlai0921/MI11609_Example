@@ -1,0 +1,4 @@
+﻿Dim sht As Worksheet
+For Each sht In Worksheets
+	sht.Range("A1").Value = "已確認"
+Next

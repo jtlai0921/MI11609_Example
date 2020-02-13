@@ -1,0 +1,4 @@
+﻿Worksheets(2).Range("B2:D10").AutoFilter _
+	Field:=3, Criteria1:="麵包"
+Worksheets(2).Range("B2:D10").Copy Destination:=Range("F2")
+Worksheets(2).Range("B2:D10").AutoFilter

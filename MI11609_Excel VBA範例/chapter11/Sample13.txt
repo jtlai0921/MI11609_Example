@@ -1,0 +1,8 @@
+﻿Sub saveData(inputSheet As Worksheet, saveSheet As Worksheet)
+        'STEP1：宣告儲存變數
+	Dim dataRange As Range  	'資料範圍變數
+	Dim saveFieldRange As Range	'儲存欄位範圍
+	'取得資料範圍儲存至變數
+	Set dataRange = inputSheet.Range("B13:F18")
+	'儲存至「歷史報價」工作表
+	Set saveFieldRange = saveSheet.Range("B2:K2")

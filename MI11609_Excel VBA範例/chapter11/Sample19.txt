@@ -1,0 +1,11 @@
+﻿Dim folderPath As String '儲存資料夾路徑的變數
+With Application.FileDialog(msoFileDialogFolderPicker)
+	.Title = "請選取要匯入的資料夾"
+	If .Show = 0 Then
+		'未選取任何資料夾的處理
+	End If
+	folderPath = .SelectedItems(1)
+End With
+
+'透過訊息盒顯示選取的資料夾
+MsgBox "您所選取的資料夾路徑為：" & folderPath

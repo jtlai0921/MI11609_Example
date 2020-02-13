@@ -1,0 +1,20 @@
+﻿'加法
+Range("E3").Value = 5 + 2
+
+'減法
+Range("E4").Value = 5 - 2
+
+'乘法
+Range("E5").Value = 5 * 2
+
+'除法
+Range("E6").Value = 5 / 2
+
+'除法取整數的商
+Range("E7").Value = 5 \ 2
+
+'餘數
+Range("E8").Value = 5 Mod 2
+
+'乘冪
+Range("E9").Value = 5 ^ 2

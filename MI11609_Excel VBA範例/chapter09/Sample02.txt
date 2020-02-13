@@ -1,0 +1,6 @@
+﻿Private Sub Workbook_BeforeClose(Cancel As Boolean)
+	If Range("B3").Value = "" Then
+		MsgBox "關閉工作表之前，請先輸入完整姓名"
+		Cancel = True
+	End If
+End Sub

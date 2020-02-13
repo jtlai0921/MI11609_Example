@@ -1,0 +1,5 @@
+﻿Sub 値的輸入()
+	Range("B2").Value = "Hello"
+	Range("B4").Value = "Excel"
+	Range("B6").Value = "VBA"
+End Sub

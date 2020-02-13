@@ -1,0 +1,2 @@
+﻿'變更儲存格A1的值
+Range("A1").Value = "VBA"

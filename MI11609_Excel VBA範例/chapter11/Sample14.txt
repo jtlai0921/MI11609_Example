@@ -1,0 +1,13 @@
+﻿Sub 特定活頁簿的統計()
+	Dim targetBook As Workbook	'宣告活頁簿變數
+	Dim filePath As String  	'儲存檔案路徑
+	filePath = ThisWorkbook.Path & "\統計用\1月佐佐木傳票.xlsx"
+	Set targetBook = Workbooks.Open(filePath)
+	'集計
+	Dim sht As Worksheet
+	'使用迴圈處理所有工作表
+	For Each sht In targetBook.Worksheets
+		Call saveData(sht, ThisWorkbook.Worksheets("報價單歷史報價"))
+	Next
+	targetBook.Close
+End Sub

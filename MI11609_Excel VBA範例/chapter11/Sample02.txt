@@ -1,0 +1,3 @@
+﻿Sub writeHello(rng As Range)
+	rng.Value = "Hello"
+End Sub

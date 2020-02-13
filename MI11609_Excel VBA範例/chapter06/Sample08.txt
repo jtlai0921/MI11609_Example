@@ -1,0 +1,6 @@
+﻿Dim rng As Range
+Set rng = Worksheets(2).Range("B2:D10")
+
+rng.AutoFilter Field:=3, Criteria1:="麵包"
+rng.Copy Destination:=Range("F2")
+rng.AutoFilter

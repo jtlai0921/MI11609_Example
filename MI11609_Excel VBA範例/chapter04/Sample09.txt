@@ -1,0 +1,4 @@
+﻿Sub Macro3()
+	'工作表名稱變更
+	Worksheets(1).Name = Range("A1").Value
+End Sub

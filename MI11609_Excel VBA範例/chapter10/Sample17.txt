@@ -1,0 +1,6 @@
+﻿'新編號的輸入
+Sub getNewID()
+	Worksheets("報價單表單").Range("F4").Value = _
+		Application.WorksheetFunction.Max( _
+			Worksheets("歷史報價").Range("B:B")) + 1
+End Sub

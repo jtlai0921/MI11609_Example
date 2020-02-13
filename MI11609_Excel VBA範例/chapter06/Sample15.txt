@@ -1,0 +1,9 @@
+﻿Sub Macro3()
+	Dim num As Long
+	num = Range("E2").Value
+
+	'3種商品的小計計算
+	Range("E5").Value = Range("D5").Value * num
+	Range("E6").Value = Range("D6").Value * num
+	Range("E7").Value = Range("D7").Value * num
+End Sub

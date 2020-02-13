@@ -1,0 +1,5 @@
+﻿'列印複製到其他工作表
+Sub printAndCopy()
+	Call checkAndPrint
+	Call copyRangeToNewSheet
+End Sub

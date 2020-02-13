@@ -1,0 +1,1 @@
+﻿MsgBox "第1行" & vbCrLf & "第2行"

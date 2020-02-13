@@ -1,0 +1,21 @@
+﻿Sub 透過選取檔案統計()
+	Dim filePath As Variant
+	filePath = Application.GetOpenFilename( _
+		FileFilter:="Excel試算表(*.xlsx;*.xlsm),*.xlsx;*.xlsm" _
+	)
+	If filePath = False Then
+        	'未選取任何檔案
+        	MsgBox "您未選取任何檔案！"
+	Exit Sub
+	End If
+	'開啟單一檔案
+	Dim targetBook As Workbook	'儲存欲開啟的活頁簿
+	Set targetBook = Workbooks.Open(filePath)
+	'集計
+	Dim sht As Worksheet
+	'透過訊息盒顯示選取路徑
+	For Each sht In targetBook.Worksheets
+		Call saveData(sht, ThisWorkbook.Worksheets("報價單歷史報價"))
+	Next
+	targetBook.Close
+End Sub

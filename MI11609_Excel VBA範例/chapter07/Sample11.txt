@@ -1,0 +1,3 @@
+﻿Dim arr As Variant
+arr = Array(Range("A1:C10"), Range("A2:C20"))
+Debug.Print arr(0).Address, arr(1).Address

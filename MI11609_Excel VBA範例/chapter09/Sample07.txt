@@ -1,0 +1,10 @@
+﻿Private Sub Worksheet_Change(ByVal Target As Range)
+	If Target.Address = "$C$2" Then
+		MsgBox "您目前修改的是C2儲存格資料。"
+	End If
+	Dim rng As Range
+	Set rng = Application.Intersect(Target, Range("C3:C4"))
+	If Not rng Is Nothing Then
+		MsgBox "您目前修改的是C3:C4的儲存格資料。"
+	End If
+End Sub

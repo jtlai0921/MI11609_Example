@@ -1,0 +1,9 @@
+﻿Private Sub Workbook_BeforeClose(Cancel As Boolean)
+	Dim rng As Range
+	For Each rng In Worksheets(1).Range("C2:C4")
+		If rng.Value = "" Then
+			MsgBox "請完整輸入C2:C4資料後活頁簿方可正常關閉。"
+			Cancel = True
+		End If
+	Next
+End Sub

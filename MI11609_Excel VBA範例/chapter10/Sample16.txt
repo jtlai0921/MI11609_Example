@@ -1,0 +1,6 @@
+﻿'新編號的輸入
+Sub getNewID()
+	Worksheets("輸入").Range("F1").Value = _
+		Application.WorksheetFunction.Max( _
+			Worksheets("歷史記錄").Range("B:B")) + 1
+End Sub

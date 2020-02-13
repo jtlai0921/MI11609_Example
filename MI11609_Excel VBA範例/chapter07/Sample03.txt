@@ -1,0 +1,12 @@
+﻿Dim score As Long
+score = Range("B3").Value
+
+If score >= 80 Then
+	MsgBox "優"
+ElseIf score >= 60 Then
+	MsgBox "良"
+ElseIf score >= 50 Then
+	MsgBox "可"
+Else
+	MsgBox "不合格"
+End If

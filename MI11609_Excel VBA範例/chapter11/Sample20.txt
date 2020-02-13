@@ -1,0 +1,31 @@
+﻿Sub 使用選取檔案夾的統計()
+	Dim folderPath As String '儲存資料夾路徑的變數
+	With Application.FileDialog(msoFileDialogFolderPicker)
+		.Title = "請選取要匯入的資料夾"
+		If .Show = 0 Then
+			'未選取任何資料夾的處理
+		End If
+		folderPath = .SelectedItems(1)
+	End With
+
+	'指定要讀取的副檔名類型
+	Dim fileExtension As String
+	fileExtension = "*.xlsx"
+	'透過迴圈讀取資料夾中所有檔案
+	Dim fileName As Variant
+	fileName = Dir(folderPath & "\" & fileExtension)
+	Do While fileName <> ""
+		Dim targetBook As Workbook
+		Set targetBook = _
+			Workbooks.Open(folderPath & "\" & fileName)
+		'集計
+		Dim sht As Worksheet
+ 
+		For Each sht In targetBook.Worksheets
+			Call saveData( _
+				sht, ThisWorkbook.Worksheets("報價單歷史報價"))
+			Next
+		targetBook.Close
+		fileName = Dir()
+	Loop
+End Sub

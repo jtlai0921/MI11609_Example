@@ -1,0 +1,2 @@
+﻿Const TAX = 0.08
+MsgBox "含稅金額：" & 1000 * TAX & "元"

@@ -1,0 +1,27 @@
+﻿'輸入從指定日開始30日間的日期
+Sub write30Days(dateRange As Range)
+	'確認適同的日期
+	Dim arr As Variant, tmpDate As Date
+	On Error Resume Next
+		arr = Array( _
+			Val(Trim(dateRange.Cells(1).Value)), _
+			Val(Trim(dateRange.Cells(2).Value)), _
+			Val(Trim(dateRange.Cells(3).Value)) _
+		)
+		tmpDate = DateValue(Join(arr, "/"))
+		If Err.Number <> 0 Then
+			'錯誤發生時跳出輸入內容而結束
+			MsgBox "請輸入日期讀取值"
+			Application.Undo
+			Exit Sub
+		End If
+	On Error GoTo 0
+	'自任意的儲存格輸入30個分「日期」的値
+	Application.EnableEvents = False
+	Dim i As Long
+	For i = 1 To 30
+		tmpDate = DateAdd("D", tmpDate, 1)
+		dateRange.Cells(3).Offset(0, i).Value = Day(tmpDate)
+	Next
+	Application.EnableEvents = True
+End Sub

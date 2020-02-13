@@ -1,0 +1,8 @@
+﻿Dim selectedButton As Long
+selectedButton = _
+	MsgBox("請按下「是」或「否」的按鈕", Buttons:=vbYesNo)
+If selectedButton = vbYes Then
+	MsgBox "您按下「是」鈕！"
+Else
+	MsgBox "您按下「否」鈕！"
+End If

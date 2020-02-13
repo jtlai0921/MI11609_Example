@@ -1,0 +1,5 @@
+﻿Private Sub Worksheet_Change(ByVal Target As Range)
+	If Target.Value < 10 Then
+		Target.Value = Target.Value + 1
+	End If
+End Sub

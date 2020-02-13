@@ -1,0 +1,14 @@
+﻿Dim targetBook As Workbook	'宣告活頁簿變數
+Dim filePath As String  	'儲存檔案路徑
+
+'1.指定檔案路徑
+filePath = "指定文件的路徑在這裡"
+
+'2.打開一個活頁簿
+Set targetBook = Workbooks.Open(filePath)
+
+'3.使用訊息盒顯示開啟的活頁簿名稱
+MsgBox targetBook.Name & "透過變數開啟"
+
+'4.將活頁簿關閉
+targetBook.Close

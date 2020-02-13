@@ -1,0 +1,5 @@
+﻿Dim total As Long, tmpStr As Variant
+For Each tmpStr In Array("增田傳票", "星野傳票", "前田傳票")
+	total = total + Worksheets(tmpStr).Range("F9").Value
+Next
+MsgBox "合計金額:" & Format(total, "#,###")

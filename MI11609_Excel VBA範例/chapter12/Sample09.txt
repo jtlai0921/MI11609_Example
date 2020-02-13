@@ -1,0 +1,54 @@
+﻿'在對應期間填上色彩
+Sub fillRange(rng As Range)
+	'取得做為處理對象的列號
+	Dim rowNo As Long
+	rowNo = rng.Row
+	'設定對象欄的期間全體儲存格範圍
+	Dim workPeriodRange As Range
+	Set workPeriodRange = _
+	Range(Cells(rowNo, "H"), Cells(rowNo, "AL"))
+	'清除目前的背景色
+	workPeriodRange.Interior.ColorIndex = xlColorIndexNone
+	'設定塗上的顏色
+	Dim fillColor As Long
+	fillColor = Cells(rowNo, "D").Interior.color
+	'設定輸入對應期間日期的儲存格範圍
+	Dim daysRange As Range
+	Set daysRange = Range("H6:AL6")
+	'指定輸入有開始日・結束日的儲存格範圍
+	Dim startDayRange As Range, finishDayRange As Range
+	Set startDayRange = Cells(rowNo, "E")
+	Set finishDayRange = Cells(rowNo, "F")
+	'若有空白的情況就跳出處理
+	If startDayRange.Value = _
+		"" Or finishDayRange.Value = "" Then
+		Exit Sub
+	End If
+	'取得開始日・結束日
+	Dim startDay As Date, finishDay As Date
+	startDay = startDayRange.Value
+	finishDay = finishDayRange.Value
+	'確認開始日・結束日合適性
+	If startDay < daysRange.Cells(1).Value Or _
+		startDay > daysRange.Cells(daysRange.Cells.count).Value Or _
+		startDay < daysRange.Cells(1).Value Or _
+		startDay > daysRange.Cells(daysRange.Cells.count).Value Or _
+		startDay > finishDay _
+	Then
+		Exit Sub
+	End If
+	'取得期間內符合開始日・結束日儲存格的索引編號
+	Dim startDayIndex As Variant, finishDayIndex As Variant
+	Dim wf As WorksheetFunction, arr As Variant
+	Set wf = Application.WorksheetFunction
+	'將儲存格的值建立1元次陣列
+	arr = wf.Transpose(wf.Transpose(daysRange.Value))
+	'使用MATCH工作表函數取得開始日・結束日是第幾號
+	startDayIndex = wf.Match(CLng(startDay), arr, 1)
+	finishDayIndex = wf.Match(CLng(finishDay), arr, 1)
+	'填滿
+	Range( _
+		workPeriodRange.Cells(startDayIndex), _
+			workPeriodRange(finishDayIndex) _
+	).Interior.color = fillColor
+End Sub

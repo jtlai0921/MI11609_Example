@@ -1,0 +1,1 @@
+﻿Range("C3").Delete Shift:=xlShiftToLeft

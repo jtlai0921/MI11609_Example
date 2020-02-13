@@ -1,0 +1,6 @@
+﻿'設定來源的工作表與範圍儲存格
+Set inputSheet = Worksheets("報價單表單")
+Set dataRange = inputSheet.Range("B13:F18")
+'設定轉出目的地的工作表與範圍儲存格
+Set saveSheet = Worksheets("歷史報價")
+Set saveFieldRange = saveSheet.Range("B2:K2")

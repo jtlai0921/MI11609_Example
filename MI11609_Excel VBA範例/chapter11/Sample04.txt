@@ -1,0 +1,11 @@
+﻿'設定範圍陣列
+Dim rangeList(2) As Range
+Set rangeList(0) = Range("B2")
+Set rangeList(1) = Range("D2:E5")
+Set rangeList(2) = Range("B7:E7")
+'執行迴圈並呼叫writeHello巨集
+Dim i As Long
+For i = 0 To UBound(rangeList)
+	'以陣列的方式傳入參數
+	Call writeHello(rangeList(i))
+Next

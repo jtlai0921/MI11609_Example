@@ -1,0 +1,9 @@
+﻿'兩種類型的宣告
+Dim price As Long, totalRange As Range
+
+'分別代入
+price = 1200
+Set totalRange = Worksheets(1).Range("B2")
+
+'使用變數名稱完成處理
+totalRange.Value = price * 10

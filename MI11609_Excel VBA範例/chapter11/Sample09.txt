@@ -1,0 +1,5 @@
+﻿    Dim sht As Worksheet
+    For Each sht In ActiveWindow.SelectedSheets
+    '選取部份工作表再進行呼叫
+        Call saveData(sht)
+    Next

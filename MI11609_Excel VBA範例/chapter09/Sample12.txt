@@ -1,0 +1,5 @@
+﻿Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, _
+		Cancel As Boolean)
+	Target.Value = "ExcelVBA"
+	Cancel = True
+End Sub

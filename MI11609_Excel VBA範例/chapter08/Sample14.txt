@@ -1,0 +1,5 @@
+﻿Sub Macro3()
+	Dim num As Long
+	num = Int(123.45 * 30)
+	MsgBox "計算結果：" & Format(num, "#,###")
+End Sub

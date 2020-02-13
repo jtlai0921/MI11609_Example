@@ -1,0 +1,8 @@
+﻿Sub Macro2()
+	Dim rng As Range
+	For Each rng In Range("B2:D6")
+		If Len(rng.Value) = 3 Then
+			rng.Interior.Color = rgbRed
+		End If
+	Next
+End Sub

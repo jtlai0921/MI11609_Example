@@ -1,0 +1,3 @@
+﻿num = 10
+nun = num + 5
+MsgBox num	'在訊息盒中顯示num變數的結果(10)

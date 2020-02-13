@@ -1,0 +1,3 @@
+﻿'STEP2：取得新資料的輸入位置
+Dim newRecordOffset As Long '宣告儲存新資料的變數
+newRecordOffset = saveFieldRange.CurrentRegion.Rows.Count

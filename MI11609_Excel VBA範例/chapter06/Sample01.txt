@@ -1,0 +1,8 @@
+﻿'宣告名為「total」的變數名稱
+Dim total
+
+'將10乘以3的結果代入total變數
+total = 10 * 3
+
+'以訊息盒顯示total變數的內容
+MsgBox total

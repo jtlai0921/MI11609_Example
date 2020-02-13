@@ -1,0 +1,3 @@
+﻿Private Sub Worksheet_Change(ByVal Target As Range)
+	MsgBox "儲存格" & Target.Address & "的內容變更"
+End Sub

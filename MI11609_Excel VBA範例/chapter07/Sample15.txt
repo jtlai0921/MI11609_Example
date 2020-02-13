@@ -1,0 +1,8 @@
+﻿Sub Macro1()
+	Dim rng As Range
+	For Each rng In Range("B2:D6")
+		If rng.Value = "Excel" Then
+			rng.Interior.Color = rgbRed
+		End If
+	Next
+End Sub

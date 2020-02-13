@@ -1,0 +1,7 @@
+﻿Dim str As String
+str = InputBox( _
+	prompt:="請輸入使用雞蛋的打數：", _
+	Title:="打數確認", _
+	Default:=5 _
+)
+MsgBox "總共使用的雞蛋數量：" & Val(str) * 12

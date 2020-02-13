@@ -1,0 +1,13 @@
+﻿Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, _
+		Cancel As Boolean)
+	Target.Value = "OK"
+	Target.Interior.Color = rgbRed
+	Cancel = True
+End Sub
+
+Private Sub Worksheet_BeforeRightClick(ByVal Target As Range, _
+		Cancel As Boolean)
+	Target.ClearContents
+	Target.Interior.ColorIndex = xlColorIndexNone
+	Cancel = True
+End Sub

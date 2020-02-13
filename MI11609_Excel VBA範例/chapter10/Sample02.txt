@@ -1,0 +1,51 @@
+﻿'將輸入資料儲存至歷史記錄工作表
+Sub saveData()
+	'STEP1：將資料來源儲存至變數
+	Dim inputSheet As Worksheet	'宣告輸入的工作表變數
+	Dim saveSheet As Worksheet	'宣告歷史記錄的工作表變數
+	Dim dataRange As Range  	'宣告資料的儲存範圍變數
+	Dim saveFieldRange As Range	'宣告儲存欄位範圍變數
+
+	'設定來源工作表變數所對應的工作表與範圍
+	Set inputSheet = Worksheets("輸入")
+	Set dataRange = inputSheet.Range("B13:F23")
+
+	'設定目的地工作表變數所對應的工作表與範圍
+	Set saveSheet = Worksheets("歷史記錄")
+	Set saveFieldRange = saveSheet.Range("B2:J2")
+
+	'STEP2：取得「歷史記錄」的總筆數
+	Dim newRecordOffset As Long '宣告儲存最新記錄的變數
+	newRecordOffset = saveFieldRange.CurrentRegion.Rows.Count
+
+	'STEP3：儲存
+	'儲存規則：工作表的第一列是欄位名稱
+	Dim newRecordValues As Variant '宣告儲存新的資料變數
+	Dim dataRow As Long 　　　 '儲存工作表資料筆數
+	dataRow = 2
+
+	'開始寫入資料，從第2行開始檢查(因為第1行是欄位名稱)
+	Do While dataRange.Cells(dataRow, 1).Value <> ""
+		'將要寫入的值以陣列的方式儲存
+		newRecordValues = Array( _
+			inputSheet.Range("F1").Value, _
+			inputSheet.Range("F2").Value, _
+			inputSheet.Range("B4").Value, _
+			inputSheet.Range("C11").Value, _
+			dataRange.Cells(dataRow, 1).Value, _
+			dataRange.Cells(dataRow, 2).Value, _
+			dataRange.Cells(dataRow, 3).Value, _
+			dataRange.Cells(dataRow, 4).Value, _
+		dataRange.Cells(dataRow, 5).Value _
+		)
+
+		'寫入資料，將資料寫入至新的位置
+		saveFieldRange.Offset(newRecordOffset, 0).Value = _
+			newRecordValues
+	
+		dataRow = dataRow + 1
+	
+		'更新寫入的位置
+		newRecordOffset = newRecordOffset + 1
+	Loop
+End Sub

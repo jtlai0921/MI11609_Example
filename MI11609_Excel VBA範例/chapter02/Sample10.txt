@@ -1,0 +1,6 @@
+﻿Sub 邏輯錯誤範例()
+	'儲存格B2、B4、B6的文字輸入
+	Range("B2").Value = "Hello"
+	Range("B4").Value = "Excel"
+	Range("D5").Value = "VBA"
+End Sub

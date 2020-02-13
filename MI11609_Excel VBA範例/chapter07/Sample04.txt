@@ -1,0 +1,3 @@
+﻿If ActiveCell.Value = "Excel" And ActiveCell.Row < 5 Then
+	MsgBox "2條件同時滿足，方可看到此訊息"
+End If

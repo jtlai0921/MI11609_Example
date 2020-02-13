@@ -1,0 +1,13 @@
+﻿'STEP1：將資料來源儲存至變數
+Dim inputSheet As Worksheet'宣告輸入的工作表變數
+Dim saveSheet As Worksheet'宣告歷史記錄的工作表變數
+Dim dataRange As Range  '宣告資料的儲存範圍變數
+Dim saveFieldRange As Range'宣告儲存欄位範圍變數
+
+'設定來源工作表變數所對應的工作表與範圍
+Set inputSheet = Worksheets("輸入")
+Set dataRange = inputSheet.Range("B13:F23")
+
+'設定目的地工作表變數所對應的工作表與範圍
+Set saveSheet = Worksheets("歷史記錄")
+Set saveFieldRange = saveSheet.Range("B2:J2")

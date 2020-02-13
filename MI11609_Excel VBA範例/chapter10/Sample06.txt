@@ -1,0 +1,27 @@
+﻿'STEP3：儲存
+'儲存規則：工作表的第一列是欄位名稱
+Dim newRecordValues As Variant '宣告儲存新的資料變數
+Dim dataRow As Long 　　　 '儲存工作表資料筆數
+dataRow = 2
+'開始寫入資料，從第2行開始檢查(因為第1行是欄位名稱)
+Do While dataRange.Cells(dataRow, 1).Value <> ""
+	'將要寫入的值以陣列的方式儲存
+	newRecordValues = Array( _
+		inputSheet.Range("F1").Value, _
+		inputSheet.Range("F2").Value, _
+		inputSheet.Range("B4").Value, _
+		inputSheet.Range("C11").Value, _
+		dataRange.Cells(dataRow, 1).Value, _
+		dataRange.Cells(dataRow, 2).Value, _
+		dataRange.Cells(dataRow, 3).Value, _
+		dataRange.Cells(dataRow, 4).Value, _
+		dataRange.Cells(dataRow, 5).Value _
+	)
+	'寫入資料，將資料寫入至新的位置
+	saveFieldRange.Offset(newRecordOffset, 0).Value = _
+		newRecordValues
+
+	dataRow = dataRow + 1
+	'更新寫入的位置
+	newRecordOffset = newRecordOffset + 1
+Loop

@@ -1,0 +1,12 @@
+﻿Sub 使用巨集收集資料()
+	Dim sheetList(3) As Worksheet, i As Long
+	'建立列表
+	Set sheetList(0) = Worksheets("1月熱呼呼")
+	Set sheetList(1) = Worksheets("1月索尼")
+	Set sheetList(2) = Worksheets("1月秋本企業")
+	Set sheetList(3) = Worksheets("1月夏普")
+	'透過迴圈儲存資料
+	For i = 0 To UBound(sheetList)
+		Call saveData(sheetList(i))
+	Next
+End Sub

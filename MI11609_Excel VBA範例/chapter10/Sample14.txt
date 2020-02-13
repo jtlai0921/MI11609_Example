@@ -1,0 +1,7 @@
+﻿'發佈一個固定項目
+With inputSheet
+	.Range("F5").Value = findCell.Offset(0, 1).Value '出負日期
+	.Range("B6").Value = findCell.Offset(0, 2).Value '負責人
+	.Range("C7").Value = findCell.Offset(0, 3).Value '聯絡人
+	.Range("F10").Value = findCell.Offset(0, 4).Value '我們的聯絡人
+End With

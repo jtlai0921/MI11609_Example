@@ -1,0 +1,8 @@
+﻿'記錄:商品編號，商品，單價，數量，金額
+With dataRange
+	.Cells(tmpRow, 1).Value = findCell.Offset(0, 5).Value '商品編號
+	.Cells(tmpRow, 2).Value = findCell.Offset(0, 6).Value '商品
+	.Cells(tmpRow, 3).Value = findCell.Offset(0, 7).Value '單價
+	.Cells(tmpRow, 4).Value = findCell.Offset(0, 8).Value '數量
+	.Cells(tmpRow, 5).Value = findCell.Offset(0, 9).Value '金額
+End With

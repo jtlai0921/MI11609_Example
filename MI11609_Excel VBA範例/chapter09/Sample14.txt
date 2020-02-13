@@ -1,0 +1,10 @@
+﻿Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, _
+		Cancel As Boolean)
+	Dim rng As Range
+	Set rng = Application.Intersect(Target, Range("D4:D8"))
+	If Not rng Is Nothing Then
+		Target.Value = "OK"
+		Target.Interior.Color = rgbRed
+		Cancel = True
+	End If
+End Sub

@@ -1,0 +1,19 @@
+﻿'依負責人篩選
+Sub 依負責人篩選()
+	'若有銷售明細工作表以外時就刪除
+	Call deleteSheetsExclude(Worksheets("銷售明細"))
+	'利用負責人（欄位號碼「4」）進行篩選＆轉寫。引數是依順序指定
+	Call filterAndCopy(Range("B3:I51"), Range("M3:Q3"), 4)
+End Sub
+
+'依顧客篩選
+Sub 依顧客篩選()
+	'若有銷售明細工作表以外時就刪除
+	Call deleteSheetsExclude(excludeSheet:=Worksheets("銷售明細"))
+	'利用顧客（欄位號碼「3」）進行篩選＆轉寫。引數是利用名稱引數指定
+	Call filterAndCopy( _
+		dataRange:=Range("B3:I51"), _
+		fieldRange:=Range("M6:Q6"), _
+		fieldNo:=3 _
+	)
+End Sub

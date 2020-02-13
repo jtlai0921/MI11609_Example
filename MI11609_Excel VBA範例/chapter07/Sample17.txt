@@ -1,0 +1,10 @@
+﻿Sub Macro3()
+	Dim arr(2) As String, i As Long
+	arr(0) = "紅豆麵包"
+	arr(1) = "吐司麵包"
+	arr(2) = "肉包子"
+
+	For i = 0 To 2
+		Cells(i + 1, 1).Value = arr(i)
+	Next
+End Sub

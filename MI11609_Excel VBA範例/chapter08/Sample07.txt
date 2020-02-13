@@ -1,0 +1,1 @@
+﻿MsgBox "跟狗比起來您比較喜歡貓嗎？", Buttons:=vbYesNo + vbQuestion

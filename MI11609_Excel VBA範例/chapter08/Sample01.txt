@@ -1,0 +1,4 @@
+﻿    Dim str As String, strLength As Long
+    str = "ExcelVBA"
+    strLength = Len(str)
+    MsgBox str & "的字數：" & strLength

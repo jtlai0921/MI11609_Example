@@ -1,0 +1,12 @@
+﻿newRecordValues = Array( _
+	inputSheet.Range("F4").Value, _
+	inputSheet.Range("F5").Value, _
+	inputSheet.Range("B6").Value, _
+	inputSheet.Range("C7").Value, _
+	inputSheet.Range("F10").Value, _
+	dataRange.Cells(dataRow, 1).Value, _
+	dataRange.Cells(dataRow, 2).Value, _
+	dataRange.Cells(dataRow, 3).Value, _
+	dataRange.Cells(dataRow, 4).Value, _
+	dataRange.Cells(dataRow, 5).Value _
+)

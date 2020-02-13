@@ -1,0 +1,3 @@
+﻿Dim arr As Variant
+arr = Array("蘋果", "香蕉", "橘子")
+Debug.Print arr(0), arr(1), arr(2)

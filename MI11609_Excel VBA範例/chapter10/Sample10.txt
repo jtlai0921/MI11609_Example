@@ -1,0 +1,5 @@
+﻿Set inputSheet = Worksheets("報價單表單")
+Set dataRange = inputSheet.Range("B13:F18")
+'取得「歷史報價」工作表第一列的欄位名稱
+Set keyFieldRange = Worksheets("歷史報價"). _
+	Range("B2:K2").CurrentRegion.Columns(1)

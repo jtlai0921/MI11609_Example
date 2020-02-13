@@ -1,0 +1,18 @@
+﻿'列印勾選的必要事項
+Sub checkAndPrint()
+	'設定想勾選的儲存格範圍
+	Dim checkRange As Range
+	Set checkRange = Range("F1:F2,B4,C11,B14,E14")
+	'確認是否有輸入
+	Dim rng As Range
+	For Each rng In checkRange
+		If rng.Value = "" Then
+			'若無輸入值就結束處理
+			checkRange.Select
+			MsgBox "尚有需輸入值的資料"
+		End
+	End If
+	Next
+	'指定儲存格範圍列印
+	Range(Range("H13").Value).PrintOut
+End Sub

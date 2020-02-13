@@ -1,0 +1,5 @@
+﻿Dim 單價 As Long, 數量 As Long, 合計金額 As Range
+單價 = 50
+數量 = 50
+Set 合計金額 = Range("A1")
+合計金額.Value = 單價 * 數量

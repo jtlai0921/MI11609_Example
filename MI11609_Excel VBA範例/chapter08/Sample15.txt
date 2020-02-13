@@ -1,0 +1,9 @@
+﻿Sub Macro4()
+	Dim selectedButton As Long
+	selectedButton = MsgBox("您想要進行的處理？ ", vbYesNo)
+	If selectedButton = vbCancel Then
+		MsgBox "處理已經中斷！"
+		Exit Sub
+	End If
+	MsgBox "處理結束！"
+End Sub

@@ -1,0 +1,24 @@
+﻿'報價單表單工作表初始化
+Sub resetSheet()
+	'報價單編號更新
+	Call getNewID
+	With Worksheets("報價單原型")
+		.Range("F5").Value = Date '報價日期
+		.Range("B6").Value = "" '公司名稱
+		.Range("F10").Value = "" '擔任職務
+		.Range("B14:F18").ClearContents '清除商品資料
+		'輸入單價
+		'取得公司負責人
+		.Range("C7").Formula = _
+			"=IFERROR(VLOOKUP(B6,C30:D37,2,FALSE),"""") & "" 先生 / 小姐"""
+		'商品
+		.Range("C14:C18").Formula = _
+			"=IFERROR(VLOOKUP(B14,商品名單,2,FALSE), """")"
+		'單價
+		.Range("D14:D18").Formula = _
+			"=IFERROR(VLOOKUP(C14,商品名單[[商品名]:[金額]],2,FALSE)," _
+			""")"
+		'金額
+		.Range("F14:F18").Formula = "=IFERROR(D14*E14,"""")"
+	End With
+End Sub

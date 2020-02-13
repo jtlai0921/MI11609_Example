@@ -1,0 +1,2 @@
+﻿'變更第一個活頁簿「Sheet1」中，儲存格A1的值
+Workbooks(1).Worksheets("Sheet1").Range("A1").Value = "VBA"

@@ -1,0 +1,25 @@
+﻿'對應選取範圍輸入開始日和結束日
+Sub writeStartAndFinal()
+	'設定輸入開始日和結束日的儲存格範圍的欄的文字
+	Dim startDayColumn As String, finishDayColumn As String
+	startDayColumn = "E"
+	finishDayColumn = "F"
+	'設定輸入有期間全體日期的儲存格範圍
+	Dim daysRange As Range
+	Set daysRange = Range("H6:AL6")
+	'取得選取中的儲存格範圍的第一列
+	Dim rng As Range
+	Set rng = ActiveWindow.RangeSelection.Rows(1)
+	'將選取中儲存格範圍為本取得開始日・結束日
+	Dim startDay As Date, finishDay As Date
+	startDay = daysRange. _
+		Cells(rng.Column - daysRange.Column + 1).Value
+	finishDay = _
+		daysRange.Cells(rng.Cells(rng.Cells.count).Column - _
+		daysRange.Column + 1).Value
+	'對開始日・結束日的儲存格輸入
+	Application.EnableEvents = False
+	Cells(rng.Row, startDayColumn).Value = startDay
+	Application.EnableEvents = True
+	Cells(rng.Row, finishDayColumn).Value = finishDay
+End Sub

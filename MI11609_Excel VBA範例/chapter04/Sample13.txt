@@ -1,0 +1,8 @@
+﻿'刪除第一張工作表
+Worksheets(1).Delete
+
+'刪除A1儲存格資料
+Range("A1").Delete
+
+'刪除「顧客資料」活頁簿
+ThisWorkbook.Names("顧客資料").Delete

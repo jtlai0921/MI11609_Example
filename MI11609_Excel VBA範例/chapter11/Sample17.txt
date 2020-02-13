@@ -1,0 +1,11 @@
+﻿Dim filePath As Variant	'儲存選取結果路徑
+filePath = Application.GetOpenFilename( _
+	FileFilter:="Excel試算表(*.xlsx;*.xlsm),*.xlsx;*.xlsm" _
+)
+If filePath = False Then
+	'未選取任何資料夾
+	Exit Sub
+End If
+
+'透過訊息盒顯示選取路徑
+MsgBox "您所選取的路徑為：" & filePath

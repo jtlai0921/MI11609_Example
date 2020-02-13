@@ -1,0 +1,8 @@
+﻿'開新檔案(活頁簿)
+Workbooks.Add
+
+'新增工作表(在第2張工作表之後)
+Worksheets.Add After:=Worksheets(2)
+
+'將B2:H12範圍建立名為「顧客資料」的範圍名稱
+ThisWorkbook.Names.Add "顧客資料", Range("B2:H12")

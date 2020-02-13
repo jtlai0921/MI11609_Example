@@ -1,0 +1,4 @@
+﻿Dim inuRange As Range
+Set inuRange = Range("B2:D5").Find(What:="戌", _
+	LookIn:=xlValues, LookAt:=xlWhole)
+MsgBox "輸入戌的儲存格為" & inuRange.Address

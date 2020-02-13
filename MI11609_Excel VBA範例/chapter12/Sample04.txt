@@ -1,0 +1,44 @@
+﻿'顯示下一個資料
+Sub loadNaxt()
+	Call loadData(1)
+End Sub
+
+'顯示前一個資料
+Sub loadPrevious()
+	Call loadData(-1)
+End Sub
+
+'從目前的ID,只顯示對引數指定前/後的資料
+Sub loadData(direction As Long)
+	'設定以卡片型顯示・輸入的工作表
+	Dim inputsheet As Worksheet
+	Set inputsheet = Worksheets("顧客卡片")
+	Dim IDRange As Range
+	'設定儲存用的表單
+	Dim dataTable As ListObject
+	Set dataTable = _
+		Worksheets("顧客一覧").ListObjects("顧客表單")
+	'設定以鍵為ID所被輸入的儲存格
+	Set IDRange = inputsheet.Range("C2")
+	'取得現在的id
+	Dim id As Long
+	id = Val(IDRange.Value)
+	'只加上引數的分,收入到表單欄數間的值(1~最大欄號)
+	Dim dataCount As Long
+	dataCount = dataTable.ListRows.Count
+	id = (id + direction + dataCount - 1) Mod dataCount + 1
+	'取得轉寫指定id的資料
+	Dim currentRecord As Range
+	Set currentRecord = dataTable.ListRows(id).Range
+	With inputsheet
+		.Range("C2").Value = currentRecord(1).Value 'ID
+		.Range("C3").Value = currentRecord(2).Value '姓名
+		.Range("C4").Value = currentRecord(3).Value '英文
+		.Range("C5").Value = currentRecord(4).Value '性別
+		.Range("C6").Value = currentRecord(5).Value '電話號碼
+		.Range("C7").Value = currentRecord(6).Value '郵遞區號
+		.Range("C8").Value = currentRecord(7).Value '地址1
+		.Range("C9").Value = currentRecord(8).Value '地址2
+		.Range("C10").Value = currentRecord(9).Value '生年月日
+	End With
+End Sub

@@ -1,0 +1,3 @@
+﻿Dim total As Long
+total = Application.WorksheetFunction.Sum(Range("B2:D4"))
+MsgBox "Sum函數的結果：" & total

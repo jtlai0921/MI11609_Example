@@ -1,0 +1,13 @@
+﻿'使用選擇結構呼叫saveData巨集
+Sub 選擇結構呼叫巨集()
+    Dim sht As Worksheet
+    '使用For Each迴圈將活頁簿中的工作表，匯入至歷史報價工作表，除了「報價單表單」、「歷史報價」
+    For Each sht In Worksheets
+        Select Case sht.Name
+            Case "報價單表單"
+            Case "歷史報價"
+            Case Else
+                Call saveData(sht)
+        End Select
+    Next
+End Sub

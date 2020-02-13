@@ -1,0 +1,6 @@
+﻿Dim targetBook As Workbook	'宣告活頁簿變數
+Dim filePath As String  	'儲存檔案路徑
+filePath = "C:\excel\東京販賣.xlsx"
+Set targetBook = Workbooks.Open(filePath)
+MsgBox targetBook.Name & "透過變數開啟"
+targetBook.Close

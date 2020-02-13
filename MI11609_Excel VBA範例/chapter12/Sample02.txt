@@ -1,0 +1,49 @@
+﻿'將指定儲存格包含工作表的高與寬進行複製
+Sub copyRangeToNewSheet()
+	'設定複製的儲存格範圍
+	Dim copyRange As Range, _
+	rowCount As Long, columnCount As Long
+	Set copyRange = Range(Range("H13").Value)
+	rowCount = copyRange.Rows.Count
+	columnCount = copyRange.Columns.Count
+	'建立新增工作表名稱
+	Dim sheetName As String
+	sheetName = Range("B4").Value & "_" & Range("C11").Value
+	'建立新增工作表，包含高與寬進行複製
+	Dim newSheet As Worksheet
+	Set newSheet = Worksheets.Add(After:=Sheets(Sheets.Count))
+	With newSheet
+		'變更工作表名稱
+		.Name = sheetName
+		Dim i As Long
+		'調整高度
+		For i = 1 To copyRange.Rows.Count
+			.Rows(i).RowHeight = copyRange.Rows(i).RowHeight
+		Next
+		'調整儲存格寬度
+		For i = 1 To copyRange.Columns.Count
+			.Columns(i).ColumnWidth = _
+			copyRange.Columns(i).ColumnWidth
+		Next
+		'進行複製轉寫公式或儲存格的結合狀態
+		copyRange.Copy .Range("A1")
+		'只轉寫公式的值
+		'因為有結合儲存格時無法「只貼上值」
+		'轉寫「公式」儲存格的值
+		'取得轉寫範圍
+		Dim newSheetRange As Range
+		Set newSheetRange = _
+			.Range(.Cells(1, 1), .Cells(rowCount, columnCount))
+		'算出轉寫範圍和原儲存格範圍的列・欄座標的差距
+		Dim rng As Range, rowGap As Long, colGap As Long
+		rowGap = copyRange.Row - 1
+		colGap = copyRange.Column - 1
+		'轉寫「公式」儲存格的值
+		For Each rng In copyRange. _
+			SpecialCells(xlCellTypeFormulas)
+			newSheetRange. _
+				Cells(rng.Row - rowGap, rng.Column - colGap). _
+					Value = rng.Value
+		Next
+	End With
+End Sub

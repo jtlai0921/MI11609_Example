@@ -1,0 +1,11 @@
+﻿'串接2段文字
+Range("C5").Value = "Hello" & "World"
+
+'串接兩個儲存格內容
+Range("C6").Value = Range("C2").Value & Range("C3").Value
+
+'文字串接數字
+Range("C7").Value = "Excel" & 2016
+
+'串接2段文字並換行
+Range("C8").Value = "第1行" & vbCrLf & "第2行"

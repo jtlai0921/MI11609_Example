@@ -1,0 +1,25 @@
+﻿Sub 統計特定檔案夾內的活頁簿()
+	'指定對象的檔案夾的路徑
+	Dim folderPath As String
+	folderPath = ThisWorkbook.Path & "\統計用"
+	'對象的檔案種類以副檔名指定
+	Dim fileExtension As String
+	fileExtension = "*.xlsx"
+	'對所有檔案夾內的該檔案執行迴圈處理
+	Dim fileName As Variant
+	fileName = Dir(folderPath & "\" & fileExtension)
+	Do While fileName <> ""
+		Dim targetBook As Workbook '處理開啟中的活頁簿
+		Set targetBook = _
+			Workbooks.Open(folderPath & "\" & fileName)
+		'集計
+		Dim sht As Worksheet
+		'對所有工作表執行迴圈處理
+		For Each sht In targetBook.Worksheets
+			Call saveData( _
+				sht, ThisWorkbook.Worksheets("報價單歷史記錄"))
+		Next
+		targetBook.Close
+		fileName = Dir()
+	Loop
+End Sub

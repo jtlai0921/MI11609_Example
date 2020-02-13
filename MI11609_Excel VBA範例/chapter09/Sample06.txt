@@ -1,0 +1,8 @@
+﻿Private Sub Workbook_Open()
+	With Worksheets(1)
+		.Activate
+		.Range("C2:C4").ClearContents
+		.Range("C2").Select
+	End With
+	MsgBox "歡迎使用 ^_^ 提醒您，關閉前請輸入完整姓名、地址、電話。"
+End Sub

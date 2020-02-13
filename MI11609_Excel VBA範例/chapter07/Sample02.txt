@@ -1,0 +1,5 @@
+﻿If Range("B3").Value >= 50 Then
+	MsgBox "合格"
+Else
+	MsgBox "不合格"
+End If

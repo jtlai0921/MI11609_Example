@@ -1,0 +1,43 @@
+﻿'針對必須要輸入的項目進行檢查
+'“檢查項目：id的值
+'“如何檢查：
+'“1：在空白的情況下中斷過程
+'  2：如果與使用現有的值重覆可覆寫
+'“如果比目前最大的id值還小，則詢問是否要覆寫資料
+'“否則直接新增資料
+Sub checkData()
+	Dim id As Variant '目前的帳單號碼
+	Dim newestID As Long '新帳單號碼的編號值
+
+	'Application.WorksheetFunction的捷徑製作（因為太長）
+	Dim wf As WorksheetFunction
+	Set wf = Application.WorksheetFunction
+
+	'取得目前的帳單號碼
+	id = Worksheets("輸入").Range("F1").Value
+	newestID = wf.Max(Worksheets("歷史記錄").Range("B:B")) + 1
+
+	'必要的輸入判斷
+	If id = "" Then
+
+		'帳單號碼若為空值，則出現訊息視窗後中斷巨集
+		MsgBox "編號尚未輸入！"
+		Exit Sub
+	ElseIf Val(id) < newestID Then
+		'如果帳單號碼存在，則將資料儲存覆寫
+		Dim result As Long
+		result = MsgBox( _
+			"目前編號已存在，您想要覆蓋此編號的資料嗎？ ", vbYesNo)
+		If result = vbYes Then
+			'刪除已存在的資料，再將新的資料寫入
+			Call deleteCurrentIdData
+			Call saveData
+			MsgBox "新的資料已儲存。"
+		Else
+			MsgBox "已取消覆寫！"
+		End If
+	Else
+		Call saveData
+		MsgBox "資料已儲存。"
+	End If
+End Sub

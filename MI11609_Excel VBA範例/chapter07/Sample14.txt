@@ -1,0 +1,13 @@
+﻿'宣告陣列的變數類型
+Dim arr() As Long
+
+'重新定義陣列的元素數量
+ReDim arr(1)
+arr(0) = 100
+arr(1) = 200
+
+'維持原來陣列元素的數量進行擴大
+ReDim Preserve arr(UBound(arr) + 1)
+arr(UBound(arr)) = 300
+
+Debug.Print "陣列的值：", arr(0), arr(1), arr(2)

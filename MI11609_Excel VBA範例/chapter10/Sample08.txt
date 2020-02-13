@@ -1,0 +1,58 @@
+﻿'設定元轉用處
+Sub loadData()
+	'STEP1：宣告來源與目的地變數
+	Dim inputSheet As Worksheet	'宣告輸入工作表變數
+	Dim dataRange As Range   	'宣告輸入資料範圍變數
+	Dim keyFieldRange As Range	'輸入關鍵欄位變數
+	'設定來源與目的工作表
+	Set inputSheet = Worksheets("輸入")
+	Set dataRange = inputSheet.Range("B13:F23")
+	'設定標題的範圍
+	Set keyFieldRange = _
+		Worksheets("歷史報價").Range("B2:J2").CurrentRegion.Columns(1)
+
+	'STEP2：搜尋編號的儲存格
+	Dim id As Long '宣告用來儲存編號的變數
+	id = inputSheet.Range("F1").Value
+	Dim findCell As Range '儲存搜尋結果的範圍
+	Set findCell = keyFieldRange.Find(id, lookat:=xlWhole)
+	'如果未找到結果，則離開巨集
+	If findCell Is Nothing Then
+		MsgBox "找不到指定的傳票號碼！"
+		Exit Sub
+	End If
+
+	'STEP3：反回相位置再搜尋一次
+	'固定項目的設定
+	With inputSheet
+		.Range("F2").Value = findCell.Offset(0, 1).Value '出售日期
+		.Range("B4").Value = findCell.Offset(0, 2).Value '負責人
+		.Range("C11").Value = findCell.Offset(0, 3).Value '案件名稱
+	End With
+
+	
+	Dim tmpRow As Long '記錄列數
+	tmpRow = 2
+	Dim firstCell As Range '儲存第一個被找到的儲存格
+	Set firstCell = findCell
+	'清除表格內容
+	dataRange.Rows("2:" & dataRange.Rows.Count).ClearContents
+	Do
+		'記錄:商品, 摘要, 單價, 數量, 金額
+		With dataRange
+			.Cells(tmpRow, 1).Value = _
+				findCell.Offset(0, 4).Value '商品
+			.Cells(tmpRow, 2).Value = _
+				findCell.Offset(0, 5).Value '摘要
+			.Cells(tmpRow, 3).Value = _
+				findCell.Offset(0, 6).Value '單價
+			.Cells(tmpRow, 4).Value = _
+				findCell.Offset(0, 7).Value '數量
+			.Cells(tmpRow, 5).Value = _
+				findCell.Offset(0, 8).Value '金額
+		End With
+		'再搜尋一次
+		tmpRow = tmpRow + 1
+		Set findCell = keyFieldRange.FindNext(findCell)
+	Loop While findCell.Address <> firstCell.Address
+End Sub

@@ -1,0 +1,1 @@
+﻿Range("C5").Value = "Hello" + "World"

@@ -1,0 +1,11 @@
+﻿'陣列宣告並代入初值
+Dim nameList(2) As String
+nameList(0) = "篠原"
+nameList(1) = "吉野"
+nameList(2) = "黑川"
+
+'使用迴圈將陣列值代入儲存格
+Dim i As Long
+For i = 0 To 2
+	Cells(i + 1, 1).Value = nameList(i)
+Next

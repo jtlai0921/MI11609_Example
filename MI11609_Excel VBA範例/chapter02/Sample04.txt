@@ -1,0 +1,5 @@
+﻿Sub 值的輸入()
+	Range("C2").Value = "哈囉"
+	Range("D4").Value = "程式碼"
+	Range("E6:F8").Value = "客製化！"
+End Sub

@@ -1,0 +1,4 @@
+﻿Sub Macro2()
+	'工作表名稱變更
+	Worksheets(1).Name = "客戶一覧"
+End Sub

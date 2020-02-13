@@ -1,0 +1,7 @@
+﻿Private Sub Worksheet_Change(ByVal Target As Range)
+	Application.EnableEvents = False
+	If Target.Value < 10 Then
+		Target.Value = Target.Value + 1
+	End If
+	Application.EnableEvents = True
+End Sub

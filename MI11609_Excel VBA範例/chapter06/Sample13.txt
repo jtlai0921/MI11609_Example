@@ -1,0 +1,6 @@
+﻿Sub Macro1()
+	'3種商品的小計計算
+	Range("E5").Value = Range("D5").Value * 12
+	Range("E6").Value = Range("D6").Value * 12
+	Range("E7").Value = Range("D7").Value * 12
+End Sub
